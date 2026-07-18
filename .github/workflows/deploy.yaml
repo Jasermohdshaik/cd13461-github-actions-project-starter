@@ -108,7 +108,7 @@ jobs:
         run: |
           gh issue create \
             --title "$(date +'%Y-%m-%d') - Deployment: succeeded" \
-            --body "URL: ${{ steps.deployment.outputs.page_url }}"
+            --body "URL: ${{ steps.deployment.outputs.page_url }}" --repo ${{ github.repository }}
 
       - name: Create deployment status issue (failure)
         if: failure()
@@ -117,4 +117,4 @@ jobs:
         run: |
           gh issue create \
             --title "$(date +'%Y-%m-%d') - Deployment: failed" \
-            --body "URL: ${{ steps.deployment.outputs.page_url }}"
+            --body "URL: ${{ steps.deployment.outputs.page_url }}" --repo ${{ github.repository }}
